@@ -60,6 +60,11 @@ public class PasswordValidator {
             flag = false;
         }
 
+        if (!atLeastEightPattern.matcher(passwd).find()) {
+            errorList.add("Password must be at least 8 characters long!");
+            flag = false;
+        }
+
         if (!(atLeastOneNumberPattern.matcher(passwd).find() && sequencePattern.matcher(passwd).find()) || !(specialCharPattern.matcher(passwd).find() && sequencePattern.matcher(passwd).find())) {
             errorList.add("Criteria 3,6 or 4,6 are not met!");
             flag = false;
