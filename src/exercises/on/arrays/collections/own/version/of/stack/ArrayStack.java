@@ -5,6 +5,7 @@ public class ArrayStack implements Stack {
     public static final int CAPACITY = 100;
     private int capacity;
     private Object[] Student;
+    private char[] character;
     private int top = -1;
 
     public ArrayStack() {
@@ -16,6 +17,7 @@ public class ArrayStack implements Stack {
 
         this.capacity = capacity;
         Student = new Object[capacity];
+        character = new char[capacity];
     }
 
     @Override
@@ -41,24 +43,42 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public Object top() throws StackEmptyException {
-        if (isEmpty()) throw new StackEmptyException("Stack is empty!");
+    public Object top() {
+        if (isEmpty())
+            System.out.println("Stack is empty!");
         return Student[top];
     }
 
     @Override
-    public void push(Object item) throws StackFullException {
-        if (size() == capacity) throw new StackFullException("Stack is full!");
+    public void push(Object item) {
+        if (size() == capacity)
+            System.out.println("Stack is full!");
         Student[++top] = item;
     }
 
     @Override
-    public Object pop() throws StackEmptyException {
+    public Object pop() {
         Object element;
         if (isEmpty())
-            throw new StackEmptyException("Stack is empty!");
+            System.out.println("Stack is empty!");
         element = Student[top];
         Student[top--] = null;
+        return element;
+    }
+
+    @Override
+    public void pushChar(char item) {
+        if (size() == capacity)
+            System.out.println("Stack is full!");
+        character[++top] = item;
+    }
+
+    @Override
+    public char popChar() {
+        char element;
+        if (isEmpty())
+            System.out.println("Stack is empty!");
+        element = character[top--];
         return element;
     }
 }

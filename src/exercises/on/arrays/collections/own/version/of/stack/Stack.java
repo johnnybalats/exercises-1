@@ -12,11 +12,17 @@ public interface Stack {
     boolean isFull();
 
     // Returns the top item of the Stack
-    Object top() throws StackEmptyException;
+    Object top();
 
     // Adds an new item into the Stack
-    void push(Object item) throws StackFullException;
+    void push(Object item);
 
     // Removes the top item of the Stack
-    Object pop() throws StackEmptyException;
+    Object pop();
+
+    // Add a new char into the Stack
+    void pushChar(char item);
+
+    // Removes a char from the top of the Stack
+    char popChar();
 }

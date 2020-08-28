@@ -43,8 +43,10 @@ public class Exercise4 {
                 System.out.println("Give how many times the Student was absent from the course : ");
                 int absents = input.nextInt();
                 System.out.println("Give Students grade : ");
-                double grade = Double.parseDouble(input.nextLine());
-                obj.push(student = new Student(AM, name, surname, age, sex, absents, grade));
+                double grade = input.nextDouble();
+
+                student = new Student(AM, name, surname, age, sex, absents, grade);
+                obj.push(student);
             }if(choice == 2) {
 
                 obj.pop();
