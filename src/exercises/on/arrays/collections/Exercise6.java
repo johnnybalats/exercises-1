@@ -1,4 +1,4 @@
-package exercises.on.arrays.collections.own.version.of.stack;
+package exercises.on.arrays.collections;
 
 import java.util.Scanner;
 
