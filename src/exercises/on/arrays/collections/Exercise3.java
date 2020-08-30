@@ -10,19 +10,38 @@ public class Exercise3 {
 
         System.out.println("Enter a number to return its digits in descending order: ");
         int number = Integer.parseInt(scanner.nextLine());
-        System.out.println(reverseNumber(number));
+        System.out.println(descendingOrderNumber(number));
     }
 
-    private static int reverseNumber(int number) {
+    private static int descendingOrderNumber(int number) {
 
-        int reversed = 0;
+        int length = Integer.toString(number).length();
+        int a[] = new int[length];
+        int num = number;
+        int i = 0;
 
-        while (number != 0) {
-            int digit = number % 10;
-            reversed = reversed * 10 + digit;
-            number /= 10;
+        while (num != 0) {
+            a[i] = num % 10;
+            num /= 10;
+            i++;
         }
 
-        return reversed;
+        for (i = 0; i < length; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
+                if (a[j] < a[j + 1]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+
+        String result = "";
+        for (i = 0; i < length; i++)
+            result += a[i];
+
+        int descendingNumber = Integer.parseInt(result);
+
+        return descendingNumber;
     }
 }
