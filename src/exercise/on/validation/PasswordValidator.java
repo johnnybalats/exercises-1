@@ -51,6 +51,9 @@ public class PasswordValidator {
         Pattern specialCharPattern = Pattern.compile("(?=.*[@#$%^&+=])");
         Pattern atLeastEightPattern = Pattern.compile(".{8,}");
         Pattern sequencePattern = Pattern.compile("(?i)(?:([a-z0-9])\\1{2,})*");
+        String okPassword = "(?i)(?:([a-z0-9])\\\\1{2,})*(?=.*[0-9])";
+        String strongPassword = "(?i)(?:([a-z0-9])\\\\1{2,})*.{8,}";
+
         errorList.clear();
 
         boolean flag = true;
@@ -68,14 +71,14 @@ public class PasswordValidator {
         if (!(atLeastOneNumberPattern.matcher(passwd).find() && sequencePattern.matcher(passwd).find()) || !(specialCharPattern.matcher(passwd).find() && sequencePattern.matcher(passwd).find())) {
             errorList.add("Criteria 3,6 or 4,6 are not met!");
             flag = false;
-        } else {
+        } else if (passwd.matches(okPassword)) {
             System.out.println("Password OK");
         }
 
         if(!(atLeastEightPattern.matcher(passwd).find() && sequencePattern.matcher(passwd).find())) {
             errorList.add("Criteria 5,6 are not met!");
             flag = false;
-        } else {
+        } else if (passwd.matches(strongPassword)) {
             System.out.println("Strong password");
         }
 
